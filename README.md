@@ -6,7 +6,7 @@
 
 #### 1、当项目中没有.eslintrc.js文件夹时，给一个组件命名为index.vue时，
 
-  报错：`Component name "index" should always be multi-word.eslintvue. eslint(vue/multi-word-component-names)`
+报错：`Component name "index" should always be multi-word.eslintvue. eslint(vue/multi-word-component-names)`
 
   原因是 eslint-plugin-vue 版本更新了，相较之前版本，@8 版本中新增了不少规则，第一条就是 'vue/multi-word-component-names': 'error', 
   要求组件名称以驼峰格式命名，所以 index.vue 会报错。
@@ -26,3 +26,14 @@ extends: [
 ],
 ```
 
+#### 2、配置新项目的eslint报错 Error: Failed to load config “standard” to extend from
+
+安装以下依赖就能解决了
+
+```javascript
+npm i --save-dev eslint-plugin-promise
+npm i --save-dev eslint-plugin-node
+npm i --save-dev eslint-plugin-import
+npm i --save-dev eslint-plugin-standard
+npm i --save-dev eslint-config-standard
+```
