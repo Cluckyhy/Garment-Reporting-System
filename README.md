@@ -1,24 +1,5 @@
 # garment-reporting-system
 
-## Project setup
-```
-npm install
-```
+### 江西财经大学毕业设计-基于Web的服装报表管理系统的设计与实现
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+  2022-11-28上午11点创建该项目
