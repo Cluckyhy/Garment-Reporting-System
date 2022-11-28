@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { asyncRoutes } from '@/router'
+// import { asyncRoutes } from '@/router'
 
 const routerStore = defineStore('router', {
   state: () => {
