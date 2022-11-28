@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-// import { asyncRoutes } from '@/router'
+import { asyncRoutes } from '@/router'
 
 const routerStore = defineStore('router', {
   state: () => {
@@ -24,14 +24,14 @@ const routerStore = defineStore('router', {
       //       reject(error)
       //     })
       // })
-      this.routes = []
+      this.routes = asyncRoutes
     },
     generateRoutes () {
-      // return new Promise((resolve) => {
-      //   const accessedRoutes = asyncRoutes || []
-      //   this.addRoutes = accessedRoutes
-      //   resolve(accessedRoutes)
-      // })
+      return new Promise((resolve) => {
+        const accessedRoutes = asyncRoutes || []
+        this.addRoutes = accessedRoutes
+        resolve(accessedRoutes)
+      })
     }
   }
 })

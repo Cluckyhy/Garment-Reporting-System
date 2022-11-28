@@ -1,62 +1,30 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '@/layout'
 import commodityRouter from './modules/commodity.js'
+import routerStore from '@/pinia/modules/router'
+
+const $routerStore = routerStore()
+
+/**
+ * 初始化路由信息
+ */
+ export const initRouter = async () => {
+  // // 获取路由菜单
+  // await $routerStore.GetUserMenuList()
+  // 动态添加路由
+  const accessRoutes = await $routerStore.generateRoutes()
+  accessRoutes.forEach(item => router.addRoute(item))
+}
 
 export const constantRoutes = [
   {
     path: '/',
-    name: 'Home',
     component: Layout,
-    redirect: '/home',
-    meta: {
-      title: 'Home',
-      icon: 'location'
-    },
-    children: [
-      {
-        path: 'home',
-        name: 'Home1',
-        meta: {
-          title: 'Home1',
-          icon: 'location'
-        },
-        component: () => import('@/views/Home')
-      }
-    ]
+    redirect: '/commodity'
   }
 ]
 
 export const asyncRoutes = [
-  {
-    path: '/about',
-    name: 'About',
-    component: Layout,
-    redirect: '/about/index',
-    meta: {
-      title: 'About',
-      icon: 'location'
-    },
-    children: [
-      {
-        path: 'index',
-        meta: {
-          title: 'About1',
-          icon: 'location'
-        },
-        name: 'About1',
-        component: () => import('@/views/About')
-      },
-      {
-        path: 'home',
-        name: 'Home2',
-        meta: {
-          title: 'Home2',
-          icon: 'apple'
-        },
-        component: () => import('@/views/Home')
-      }
-    ]
-  },
   commodityRouter
   // shopAnalysisRoutes,
   // memberAnalysisRouter
