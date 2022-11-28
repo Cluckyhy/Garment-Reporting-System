@@ -37,3 +37,37 @@ npm i --save-dev eslint-plugin-import
 npm i --save-dev eslint-plugin-standard
 npm i --save-dev eslint-config-standard
 ```
+
+#### Vue中component内置组件的另外一种用法
+
+```javascript
+// is可传值, 来决定渲染的元素, v-bind将多个属性绑定到元素身上
+// 这里的eleType可以是 'a' 或 'router-link'，下面的情况是 a
+/*
+  没有rel=“noopener noreferrer”的情况下使用target=“_blank”是有安全风险,
+  超链接a标签的rel="noopener noreferrer"属性是一种新特性,它能让网站更安全 
+*/
+<component :is="eleType" v-bind="{href:'http://www.baidu.com',target:'_blank',rel: 'noopener'}">
+  百度
+</component>
+```
+
+#### Vue中的h()函数的使用
+
+```javascript
+// 完整参数签名
+function h(
+  // 第一个参数既可以是一个字符串 (用于原生元素) 也可以是一个 Vue 组件定义。
+  type: string | Component,
+  // 第二个参数是要传递的 prop，没有 prop 时可以省略不写
+  props?: object | null,
+  // 第三个参数是第一参数节点下的子节点。
+  children?: Children | Slot | Slots
+): VNode
+```
+
+`h()`函数可以在两个地方使用：
+
+- render 函数中
+
+- setup函数中

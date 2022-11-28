@@ -1,6 +1,5 @@
 <template>
-  <div>
-    布局组件
+  <div class="app-wrapper">
   </div>
 </template>
 <script setup>
