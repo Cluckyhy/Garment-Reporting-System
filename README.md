@@ -4,7 +4,7 @@
 
 ### 出现的问题
 
-当项目中没有.eslintrc.js文件夹时，给一个组件命名为index.vue时，
+#### 1、当项目中没有.eslintrc.js文件夹时，给一个组件命名为index.vue时，
 
   报错：`Component name "index" should always be multi-word.eslintvue. eslint(vue/multi-word-component-names)`
 
@@ -18,7 +18,7 @@
   `"vue/multi-word-component-names":"off"`,
 
   或者
-  
+
 ```javascript
 extends: [
   'plugin:vue/vue3-essential',
