@@ -1,3 +1,3 @@
-import { createPinia } from 'vue'
+import { createPinia } from 'pinia'
 const store = createPinia()
 export default store
