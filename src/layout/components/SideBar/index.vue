@@ -27,6 +27,7 @@
 import Logo from './Logo'
 import SidebarItem from './SideBarItem'
 import routerStore from '@/pinia/modules/router'
+import variables from '@/styles/variables.scss'
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
@@ -53,9 +54,9 @@ const activeMenu = computed(() => {
 //   return sidebarLogo.value
 // })
 
-// const variablesObj = computed(() => {
-//   return variables
-// })
+const variablesObj = computed(() => {
+  return variables
+})
 
 // const isCollapse = computed(() => {
 //   return !sidebar.value.opened

@@ -14,6 +14,7 @@ const routerStore = defineStore('router', {
   actions: {
     // 获取用户菜单
     GetUserMenuList () {
+      this.routes = asyncRoutes
       // return new Promise((resolve, reject) => {
       //   getUserAccMenu()
       //     .then((response) => {
@@ -24,7 +25,6 @@ const routerStore = defineStore('router', {
       //       reject(error)
       //     })
       // })
-      this.routes = asyncRoutes
     },
     generateRoutes () {
       return new Promise((resolve) => {

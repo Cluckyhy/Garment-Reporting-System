@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '@/layout'
-import commodityRouter from './modules/commodity.js'
 import pinia from '@/pinia'
+import commodityRouter from './modules/commodity.js'
 import routerStore from '@/pinia/modules/router'
 
 // 在下面代码中不传入pinia会报错"getActivePinia was called with no active Pinia"
@@ -42,9 +42,9 @@ const router = createRouter({
 })
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
-export function resetRouter () {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
-}
+// export function resetRouter () {
+//   const newRouter = createRouter()
+//   router.matcher = newRouter.matcher // reset router
+// }
 
 export default router

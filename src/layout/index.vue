@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup>
-import { Sidebar } from './conponents'
+import { Sidebar } from './components'
 </script>
 <style>
 

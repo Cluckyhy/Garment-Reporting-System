@@ -1,9 +1,9 @@
 <template>
   <router-view />
+  啧啧啧
 </template>
 
 <script setup>
-// import HelloWorld from './components/HelloWorld.vue'
 
 </script>
 
