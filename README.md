@@ -38,7 +38,7 @@ npm i --save-dev eslint-plugin-standard
 npm i --save-dev eslint-config-standard
 ```
 
-#### Vue中component内置组件的另外一种用法
+#### 3、Vue中component内置组件的另外一种用法
 
 ```javascript
 // is可传值, 来决定渲染的元素, v-bind将多个属性绑定到元素身上
@@ -52,7 +52,7 @@ npm i --save-dev eslint-config-standard
 </component>
 ```
 
-#### Vue中的h()函数的使用
+#### 4、Vue中的h()函数的使用
 
 ```javascript
 // 完整参数签名
@@ -71,3 +71,13 @@ function h(
 - render 函数中
 
 - setup函数中
+
+#### 5、解决在router中使用pinia报错"getActivePinia was called with no active Pinia"
+
+```javascript
+import pinia from '@/pinia'
+import routerStore from '@/pinia/modules/router'
+
+// 在下面代码中不传入pinia会报错"getActivePinia was called with no active Pinia"
+const $routerStore = routerStore(pinia)
+```
