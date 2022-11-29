@@ -5,7 +5,6 @@ const routes = [
   {
     path: '/',
     component: Layout,
-    // redirect: '/commodity/salesAnalysis',
     children: [
       {
         name: 'salesAnalysis',
