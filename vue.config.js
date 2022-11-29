@@ -11,7 +11,7 @@ const ElementPlus = require('unplugin-element-plus/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/is-report-front' : '/is-report-front',
+  publicPath: process.env.NODE_ENV === 'production' ? '/garment-reporting-system' : '/garment-reporting-system',
   chainWebpack: config => {
     // 测试环境不压缩代码
     process.env.NODE_ENV !== 'production' && config.optimization.minimize(false)
