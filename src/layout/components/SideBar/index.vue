@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div :class="{ 'has-logo': showLogo }">
     <Logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
@@ -61,6 +61,17 @@ const variablesObj = computed(() => {
 // const isCollapse = computed(() => {
 //   return !sidebar.value.opened
 // })
+</script>
+<style>
+
+</style> -->
+
+<template>
+  <div>
+    这里是侧边栏
+  </div>
+</template>
+<script>
 </script>
 <style>
 
