@@ -1,9 +1,44 @@
 import { defineStore } from 'pinia'
-import { asyncRoutes } from '@/router'
+import { asyncRoutes, constantRoutes } from '@/router'
+
+/**
+ * Use meta.role to determine if the current user has permission
+ * @param roles
+ * @param route
+ */
+function hasPermission (roles, route) {
+  if (route.meta && route.meta.roles) {
+    return roles.some((role) => route.meta.roles.includes(role))
+  } else {
+    return true
+  }
+}
+
+/**
+ * Filter asynchronous routing tables by recursion
+ * @param routes asyncRoutes
+ * @param roles
+ */
+export function filterAsyncRoutes (routes, roles) {
+  const res = []
+
+  routes.forEach((route) => {
+    const tmp = { ...route }
+    if (hasPermission(roles, tmp)) {
+      if (tmp.children) {
+        tmp.children = filterAsyncRoutes(tmp.children, roles)
+      }
+      res.push(tmp)
+    }
+  })
+
+  return res
+}
 
 const routerStore = defineStore('router', {
   state: () => {
     return {
+      isLoading: false, // 页面loading
       routes: [],
       addRoutes: []
     }
@@ -12,25 +47,22 @@ const routerStore = defineStore('router', {
   getters: {},
   // actions 用来修改 state, 支持同步和异步
   actions: {
-    // 获取用户菜单
-    GetUserMenuList () {
-      this.routes = asyncRoutes
-      // return new Promise((resolve, reject) => {
-      //   getUserAccMenu()
-      //     .then((response) => {
-      //       this.routes = response
-      //       resolve(response)
-      //     })
-      //     .catch((error) => {
-      //       reject(error)
-      //     })
-      // })
+    changeLoadType (type) {
+        this.isLoading = type
     },
-    generateRoutes () {
-      return new Promise((resolve) => {
-        const accessedRoutes = asyncRoutes || []
-        this.addRoutes = accessedRoutes
-        resolve(accessedRoutes)
+    generateRoutes (roles) {
+      return new Promise(resolve => {
+        // let accessedRoutes
+        // if (roles.includes('admin')) {
+        //   accessedRoutes = asyncRoutes || []
+        // } else {
+        //   accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
+        // }
+        // this.addRoutes = accessedRoutes
+        // this.routes = constantRoutes.concat(accessedRoutes)
+        // resolve(accessedRoutes)
+        this.routes = constantRoutes.concat(asyncRoutes)
+        resolve(asyncRoutes)
       })
     }
   }

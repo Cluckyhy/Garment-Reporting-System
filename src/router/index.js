@@ -1,38 +1,74 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '@/layout'
+import commodityRouter from './modules/commodity'
 
-const routes = [
+export const constantRoutes = [
   {
     path: '/',
+    name: 'Home',
     component: Layout,
+    redirect: '/home',
+    meta: {
+      title: 'Home',
+      icon: 'location'
+    },
     children: [
       {
-        name: 'salesAnalysis',
-        path: 'salesAnalysis',
+        path: 'home',
+        name: 'Home1',
         meta: {
-          title: '商品综合分析',
-          help_url: 'SALESHELP'
+          title: 'Home1',
+          icon: 'location'
         },
-        component: () => import('@/view/commodity/salesAnalysis/index')
-      },
-      {
-        name: 'attributeAnalysis',
-        path: 'attributeAnalysis',
-        meta: {
-          title: '各属性汇总分析',
-          help_url: 'ATTRIBUTE'
-        },
-        component: () => import('@/view/commodity/attributeAnalysis/index')
+        component: () => import('@/views/Home')
       }
     ]
   }
 ]
 
-const router = createRouter(
+export const asyncRoutes = [
   {
-    history: createWebHistory(),
-    routes
-  }
-)
+    path: '/about',
+    name: 'About',
+    component: Layout,
+    redirect: '/about/index',
+    meta: {
+      title: 'About',
+      icon: 'location'
+    },
+    children: [
+      {
+        path: 'index',
+        meta: {
+          title: 'About1',
+          icon: 'location'
+        },
+        name: 'About1',
+        component: () => import('@/views/About')
+      },
+      {
+        path: 'home',
+        name: 'Home2',
+        meta: {
+          title: 'Home2',
+          icon: 'apple'
+        },
+        component: () => import('@/views/Home')
+      }
+    ]
+  },
+  commodityRouter
+]
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: constantRoutes
+})
+
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+export function resetRouter () {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
 
 export default router

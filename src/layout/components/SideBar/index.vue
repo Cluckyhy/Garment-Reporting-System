@@ -1,10 +1,9 @@
-<!-- <template>
-  <div :class="{ 'has-logo': showLogo }">
+<template>
+  <div :class="{'has-logo':showLogo}">
     <Logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"
-        :default-openeds="openeds"
         :collapse="isCollapse"
         :background-color="variablesObj.menuBg"
         :text-color="variablesObj.menuText"
@@ -13,31 +12,32 @@
         :collapse-transition="true"
         mode="vertical"
       >
-        <SidebarItem
-          v-for="route in routes"
-          :key="route.pTableVO.id"
-          :item="route"
-          :base-path="route.pTableVO.url"
-        />
+        嘿嘿嘿
+        <SideBarItem v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
 </template>
+
 <script setup>
 import Logo from './Logo'
-import SidebarItem from './SideBarItem'
-import routerStore from '@/pinia/modules/router'
-import variables from '@/styles/variables.scss'
-import { computed } from 'vue'
+import SideBarItem from './SideBarItem'
+import { computed, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
+import variables from '@/styles/variables.scss'
+import routerStore from '@/pinia/modules/router'
+import settingsStore from '@/pinia/modules/settings'
 
 const $route = useRoute()
 const $routerStore = routerStore()
+const $settingsStore = settingsStore()
+const { sidebar, sidebarLogo } = storeToRefs($settingsStore)
 const { routes } = storeToRefs($routerStore)
 
-const openeds = computed(() => {
-  return routes.value
+onMounted(() => {
+  $routerStore.generateRoutes()
+  console.log(routes)
 })
 
 const activeMenu = computed(() => {
@@ -50,29 +50,15 @@ const activeMenu = computed(() => {
   return path
 })
 
-// const showLogo = computed(() => {
-//   return sidebarLogo.value
-// })
+const showLogo = computed(() => {
+  return sidebarLogo.value
+})
 
 const variablesObj = computed(() => {
   return variables
 })
 
-// const isCollapse = computed(() => {
-//   return !sidebar.value.opened
-// })
+const isCollapse = computed(() => {
+  return !sidebar.value.opened
+})
 </script>
-<style>
-
-</style> -->
-
-<template>
-  <div>
-    这里是侧边栏
-  </div>
-</template>
-<script>
-</script>
-<style>
-
-</style>
