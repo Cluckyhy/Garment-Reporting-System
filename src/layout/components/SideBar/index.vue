@@ -22,7 +22,7 @@
 <script setup>
 import Logo from './Logo'
 import SideBarItem from './SideBarItem'
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
 import variables from '@/styles/variables.scss'
@@ -34,11 +34,6 @@ const $routerStore = routerStore()
 const $settingsStore = settingsStore()
 const { sidebar, sidebarLogo } = storeToRefs($settingsStore)
 const { routes } = storeToRefs($routerStore)
-
-onMounted(() => {
-  $routerStore.generateRoutes()
-  console.log(routes)
-})
 
 const activeMenu = computed(() => {
   const route = $route

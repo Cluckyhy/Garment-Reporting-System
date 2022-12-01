@@ -6,40 +6,40 @@ import { asyncRoutes, constantRoutes } from '@/router'
  * @param roles
  * @param route
  */
-function hasPermission (roles, route) {
-  if (route.meta && route.meta.roles) {
-    return roles.some((role) => route.meta.roles.includes(role))
-  } else {
-    return true
-  }
-}
+// function hasPermission (roles, route) {
+//   if (route.meta && route.meta.roles) {
+//     return roles.some((role) => route.meta.roles.includes(role))
+//   } else {
+//     return true
+//   }
+// }
 
 /**
  * Filter asynchronous routing tables by recursion
  * @param routes asyncRoutes
  * @param roles
  */
-export function filterAsyncRoutes (routes, roles) {
-  const res = []
+// export function filterAsyncRoutes (routes, roles) {
+//   const res = []
 
-  routes.forEach((route) => {
-    const tmp = { ...route }
-    if (hasPermission(roles, tmp)) {
-      if (tmp.children) {
-        tmp.children = filterAsyncRoutes(tmp.children, roles)
-      }
-      res.push(tmp)
-    }
-  })
+//   routes.forEach((route) => {
+//     const tmp = { ...route }
+//     if (hasPermission(roles, tmp)) {
+//       if (tmp.children) {
+//         tmp.children = filterAsyncRoutes(tmp.children, roles)
+//       }
+//       res.push(tmp)
+//     }
+//   })
 
-  return res
-}
+//   return res
+// }
 
 const routerStore = defineStore('router', {
   state: () => {
     return {
       isLoading: false, // 页面loading
-      routes: [],
+      routes: constantRoutes.concat(asyncRoutes),
       addRoutes: []
     }
   },
@@ -49,9 +49,9 @@ const routerStore = defineStore('router', {
   actions: {
     changeLoadType (type) {
         this.isLoading = type
-    },
-    generateRoutes (roles) {
-      return new Promise(resolve => {
+    }
+    // generateRoutes (roles) {
+    //   return new Promise(resolve => {
         // let accessedRoutes
         // if (roles.includes('admin')) {
         //   accessedRoutes = asyncRoutes || []
@@ -61,10 +61,8 @@ const routerStore = defineStore('router', {
         // this.addRoutes = accessedRoutes
         // this.routes = constantRoutes.concat(accessedRoutes)
         // resolve(accessedRoutes)
-        this.routes = constantRoutes.concat(asyncRoutes)
-        resolve(asyncRoutes)
-      })
-    }
+      // })
+    // }
   }
 })
 

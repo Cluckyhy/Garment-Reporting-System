@@ -1,6 +1,6 @@
 <template>
   <template v-if="!props.item.hidden">
-    <template v-if="hasOneShowingChild(props.item.children,props.item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!props.item.alwaysShow">
+    <template v-if="hasOneShowingChild(props.item.children,props.item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren) && !props.item.alwaysShow">
       <AppLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!props.isNest}">
           <Item :icon="'icon-baobiao'" />
@@ -17,7 +17,7 @@
         <Item :icon="'icon-baobiao'" />
         <span>{{ props.item.meta.title }}</span>
       </template>
-      <sidebar-item
+      <SideBarItem
         v-for="child in props.item.children"
         :key="child.path"
         :is-nest="true"
@@ -28,11 +28,11 @@
   </template>
 </template>
 <script setup>
-import { ref } from 'vue'
-import { isExternal } from '@/utils/validate'
 import Item from './Item'
 import AppLink from './Link'
 import path from 'path'
+import { ref } from 'vue'
+import { isExternal } from '@/utils/validate'
 
 const props = defineProps({
   item: {
