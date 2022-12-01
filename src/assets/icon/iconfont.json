@@ -1,0 +1,44 @@
+{
+  "id": "3706651",
+  "name": "秦丝天眼报表系统",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "32402398",
+      "name": "fenxi",
+      "font_class": "fenxi",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "32402399",
+      "name": "shangpin",
+      "font_class": "shangpin",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "32402400",
+      "name": "dianpu",
+      "font_class": "dianpu",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "32402401",
+      "name": "huiyuan",
+      "font_class": "huiyuan",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "32402402",
+      "name": "yingxiao",
+      "font_class": "yingxiao",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    }
+  ]
+}
