@@ -7,7 +7,7 @@
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" alt="" class="sidebar-logo">
-        <h1 v-else class="sidebar-title">{{ title }}</h1>
+        <h1 class="sidebar-title">{{ title }}</h1>
       </router-link>
     </transition>
   </div>
@@ -15,8 +15,8 @@
 <script setup>
 import { ref } from 'vue'
 
-const title = ref('秦丝商家天眼')
-const logo = ref('https://cdn.qinsilk.com/img/home/jxc-logo.png')
+const title = ref('亿点查')
+const logo = ref(require('@/assets/images/logo.jpg'))
 
 // 传入的参数
 const props = defineProps({
