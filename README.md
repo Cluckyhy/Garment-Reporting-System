@@ -81,3 +81,19 @@ import routerStore from '@/pinia/modules/router'
 // 在下面代码中不传入pinia会报错"getActivePinia was called with no active Pinia"
 const $routerStore = routerStore(pinia)
 ```
+
+#### 6、对于一些对象的输出的问题
+```javascript
+// 这里输出的对象，里面有显示pageNum: 1
+console.log($scope.search.selectedGoodType);
+// 但是这里输出的是undefined
+console.log($scope.search.selectedGoodType.pageNum);
+
+/*
+  原因是：pageNum是后面添加上去的一个属性，但是在上面输出的$scope.search.selectedGoodType是一个指向一个对象的地址
+  所以，当你输出一个对象的地址时，可以看到这个对象后面添加的属性。但是，接下来输出对象中的pageNum属性还是没有的。
+
+  所以可以通过 JSON.stringify()方法来看当前对象的一个真正有的属性。
+  JSON.stringify($scope.search.selectedGoodType)，字符串里面可以看到里面是没有pageNum属性的
+*/
+```

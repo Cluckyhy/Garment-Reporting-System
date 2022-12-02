@@ -4,8 +4,7 @@
     <template v-if="hasOneShowingChild(props.item.children,props.item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren) && !props.item.alwaysShow">
       <AppLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!props.isNest}">
-          <Item :icon="'icon-baobiao'" />
-          <!-- <Item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" /> -->
+          <Item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" />
           <template #title>
             <span>{{ onlyOneChild.meta.title }}</span>
           </template>

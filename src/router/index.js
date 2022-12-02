@@ -10,7 +10,7 @@ export const constantRoutes = [
     redirect: '/home',
     meta: {
       title: 'Home',
-      icon: 'location'
+      icon: 'icon-huiyuan'
     },
     children: [
       {
@@ -18,7 +18,7 @@ export const constantRoutes = [
         name: 'Home1',
         meta: {
           title: 'Home1',
-          icon: 'location'
+          icon: 'icon-huiyuan'
         },
         component: () => import('@/views/Home')
       }

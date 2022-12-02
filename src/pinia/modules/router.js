@@ -48,7 +48,7 @@ const routerStore = defineStore('router', {
   // actions 用来修改 state, 支持同步和异步
   actions: {
     changeLoadType (type) {
-        this.isLoading = type
+      this.isLoading = type
     }
     // generateRoutes (roles) {
     //   return new Promise(resolve => {

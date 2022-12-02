@@ -1,12 +1,18 @@
 <template>
   <div class="app-wrapper">
-    哈哈哈哈，这里是布局组件
     <SideBar class="sidebar-container" ></SideBar>
+    <div class="main-container">
+      <div>
+        <Navbar />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import SideBar from './components/SideBar'
+import Navbar from './components/Navbar'
+
 </script>
 
 <style lang="scss" scoped>
